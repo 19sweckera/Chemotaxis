@@ -1,13 +1,37 @@
- //declare bacteria variables here   
+ public Bacteria[] dots ;
  void setup()   
  {     
- 	//initialize bacteria variables here   
+    size(500,500);
+    background(0);
+    
+    dots = new Bacteria[100];
+    for(int i = 0; i < dots.length;i++){
+      dots[i] = new Bacteria();
+    }
  }   
- void draw()   
- {    
- 	//move and show the bacteria   
+ void draw()   {   
+  background(100,100,10); 
+   for(int i = 0; i < dots.length;i++){
+     dots[i].move();
+     dots[i].show();
+   }  
  }  
- class Bacteria    
+ public class Bacteria    
  {     
- 	//lots of java!   
- }    
+   int myX;
+   int myY;
+   
+   
+ public Bacteria(){
+     myX = 0;
+     myY = 0;
+  }   
+void show(){
+  fill(0,100,105);
+  ellipse(myX,myY,20,20);
+}
+public void move(){
+ myX = myX + (int)(Math.random()*(mouseX - myX)/10);
+ myY = myY + (int)(Math.random()*(mouseY - myY)/10); 
+}
+ }
